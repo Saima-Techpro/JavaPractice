@@ -4,13 +4,13 @@ public class Q01_Variables {
     public static void main(String[] args) {
         /*
         Task: Write a Java programme to break an integer into a sequence of individual digits.
-Hint: use / and %
-x: input: 12345
-output:        1
-               2
-               3
-               4
-               5
+        Hint: use / and %
+        x: input: 12345
+        output:      1
+                     2
+                     3
+                     4
+                     5
          */
 
         int x = 12345;
