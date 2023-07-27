@@ -1,7 +1,5 @@
 package practices_dt.practice02;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class Q02_Regex_FullName {
@@ -15,29 +13,19 @@ public class Q02_Regex_FullName {
    OUTPUT:
    First name: John
    Surname: Doe
+
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your first name and surname with a space between");
+        String fullName = scan.nextLine().replaceAll("\\s+", " ").replaceAll("[^a-zA-Z ]", "").trim();
+        // "\\s+" means one space and more if there are
 
-        System.out.println("Enter your first name and last name with a space between");
-        String fullName = scan.nextLine().replaceAll("[^a-zA-Z ]","").replaceAll("\\s+", " ").trim();  // include a space inside first regex [^a-zA-Z ] as well if you don't want to remove the middle space
-                                                                                             // "\\s+" means more than one spaces in regex
         String firstName = fullName.split(" ")[0].substring(0,1).toUpperCase() + fullName.split(" ")[0].substring(1).toLowerCase();
-        String surName = fullName.split(" ")[1].substring(0,1).toUpperCase() + fullName.split(" ")[1].substring(1).toLowerCase();
+        String surname = fullName.split(" ")[1].substring(0,1).toUpperCase() + fullName.split(" ")[1].substring(1).toLowerCase();
 
-
-        System.out.println("First name: " + firstName + "\n Surname: " + surName);
-
-
-
-
-
-
-
-
+        System.out.println("First name: " + firstName + "\nSurname: " + surname);
 
 
     }
-
-
 }

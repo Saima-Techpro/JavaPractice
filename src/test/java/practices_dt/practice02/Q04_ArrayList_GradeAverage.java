@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Q04_ArrayList_GradeAverage {
+
     /*
     Get as many grades as a teacher wants to enter and find the number of students pass the average
      */
@@ -11,51 +12,44 @@ public class Q04_ArrayList_GradeAverage {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        //System.out.println("Enter your exam grade please");
-       // int grades = scan.nextInt();
-        ArrayList<Integer> examGrades = new ArrayList<>();
-        // examGrades.add(grades);
-//        examGrades.add(scan.nextInt());  // in order to save memory, we can add grades directly in the list
-//        System.out.println("examGrades = " + examGrades);
+        ArrayList<Integer> examGradesList = new ArrayList<>();
 
-        // we don't know how many elements we are going to take, so do while loop is better
 
         do{
-            System.out.println("Enter your exam grade please");
-            examGrades.add(scan.nextInt());
+            System.out.println("Enter the grade");
+            int grades = scan.nextInt();
+            examGradesList.add(grades);
 
-            System.out.println("Continue:  Y/N");
-            String condition = scan.next();
+            System.out.println("Continue: Y/N");
+            String condition= scan.next();
 
-            if (condition.equalsIgnoreCase("N")){
-                break;  // breaks the loop under this condition
+            if (condition.equalsIgnoreCase("n")){
+                break;
             }
 
+        }while(true);  // Infinite loop
 
-        }while (true);  // while (true) ==> INFINITE LOOP
-        // as long as we do not use break code, this loop will keep repeating
-
-        System.out.println("examGrades = " + examGrades);
+        System.out.println("examGradesList = " + examGradesList);
 
         // Calculate the average
-        // int sum =0;
-        double sum =0;
-        for (int w : examGrades){
+        double sum = 0;
+        for (int w : examGradesList) {
             sum += w;
         }
-        double average =  sum/examGrades.size();  // division operation between 2 int, it will remove decimal part.. so we will make sum ad double
+
+        double average =sum/examGradesList.size();
         System.out.println("average = " + average);
-
-        // Calculate how many students are above average
-
+        
+        // Calculate number of students above average
         int numOfStdAboveAvg = 0;
-        for (int w: examGrades){
+        
+        for (int w: examGradesList){
             if (w>average){
                 numOfStdAboveAvg++;
             }
         }
         System.out.println("numOfStdAboveAvg = " + numOfStdAboveAvg);
 
-
     }
+
 }
