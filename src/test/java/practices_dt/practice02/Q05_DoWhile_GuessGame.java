@@ -20,6 +20,13 @@ public class Q05_DoWhile_GuessGame {
         int randomNumber = (int)(Math.random()*101);
        //  System.out.println("randomNumber = " + randomNumber);
 
+        /*
+        Random random = new Random();
+
+         // Generate a random number between 0 and 100 (inclusive)
+             int randomNumber = random.nextInt(101);
+         */
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Guess a number between 0 and 100");
         int number;
