@@ -51,8 +51,5 @@ public class Q06_ArrayList {
 
         }while (true);
 
-
-
-
     }
 }

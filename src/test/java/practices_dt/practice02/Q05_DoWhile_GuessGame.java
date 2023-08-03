@@ -1,5 +1,6 @@
 package practices_dt.practice02;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Q05_DoWhile_GuessGame {
@@ -20,30 +21,32 @@ public class Q05_DoWhile_GuessGame {
         int randomNumber = (int)(Math.random()*101);
        //  System.out.println("randomNumber = " + randomNumber);
 
-        /*
-        Random random = new Random();
 
-         // Generate a random number between 0 and 100 (inclusive)
-             int randomNumber = random.nextInt(101);
-         */
+//        Random random = new Random();
+//         // Generate a random number between 0 and 100 (inclusive)
+//             int randomNum = random.nextInt(101);
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Guess a number between 0 and 100");
-        int number;
 
+        int number;
         int numOfAttempts = 10;
 
         do {
             numOfAttempts--;
-
             number = scan.nextInt();
+
             if (number < randomNumber){
                 System.out.println("Enter a greater number");
+                System.out.println("You have "+(numOfAttempts) +" attempt(s) left!");
+
             } else if( number > randomNumber){
                 System.out.println("Enter a smaller number");
-
+                System.out.println("You have "+(numOfAttempts) +" attempt(s) left!");
             } else {
                 System.out.println("Congratulations! You found the number!!");
+                System.out.println("You have guessed the number in "+(10 - numOfAttempts) +" attempt(s)!");
+                System.out.println("You have scored "+ (numOfAttempts + 1) * 10  +" points!");
                 break;
             }
 
@@ -64,8 +67,7 @@ public class Q05_DoWhile_GuessGame {
 
         }while (true);
 
-        System.out.println("Thanks for playing");
-
+        System.out.println("Thanks for playing, Goodbye!");
 
     }
 }
