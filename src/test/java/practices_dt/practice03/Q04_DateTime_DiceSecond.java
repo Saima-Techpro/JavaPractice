@@ -27,6 +27,9 @@ public class Q04_DateTime_DiceSecond {
     static int playerScore;
     static int computerScore;
 
+    static int playerTotalScore = 0;
+    static int computerTotalScore = 0;
+
     static int counter;
 
     public static void rollDice() {
@@ -35,30 +38,37 @@ public class Q04_DateTime_DiceSecond {
         System.out.println("Enter R to roll the dice");
         String start = scan.next();
 
-        if (start.equalsIgnoreCase("r")) {
+        do {
+            if (start.equalsIgnoreCase("r")) {
 
-            playerDice = (int) (Math.random() * 6) + 1;
-            System.out.println("playerDice = " + playerDice);
+                playerDice = (int) (Math.random() * 6) + 1;
+                System.out.println("playerDice = " + playerDice);
 
-            // to calculate the second when the dice is rolled
-            playerSecond = LocalTime.now().getSecond();
-            System.out.println("playerSecond = " + playerSecond);
+                // to calculate the second when the dice is rolled
+                playerSecond = LocalTime.now().getSecond();
+                System.out.println("playerSecond = " + playerSecond);
 
-            //condition
-            if (playerSecond % 5 == 0) {
-                playerScore += playerDice * 5;
-            } else if (playerSecond % 2 == 0) {
-                playerScore += playerDice * 2;
+                //condition
+                if (playerSecond % 5 == 0) {
+                    playerScore += playerDice * 5;
+                    playerTotalScore +=playerScore;
+                } else if (playerSecond % 2 == 0) {
+                    playerScore += playerDice * 2;
+                    playerTotalScore +=playerScore;
+                } else {
+                    playerScore += playerDice;
+                    playerTotalScore +=playerScore;
+                }
+                System.out.println("playerScore = " + playerScore);
+
+            } else if (! start.equalsIgnoreCase("r")){
+                System.out.println("You can't roll the dice because you entered the wrong letter");
+                break;
             } else {
-                playerScore += playerDice;
+                rollDice();
             }
 
-            System.out.println("playerScore = " + playerScore);
-
-        }else {
-            rollDice();
-        }
-
+            System.out.println("=======================");
             // to calculate same values for Computer
             computerDice = (int) (Math.random() * 6) + 1;
             System.out.println("computerDice = " + computerDice);
@@ -70,28 +80,34 @@ public class Q04_DateTime_DiceSecond {
             //condition
             if (computerSecond % 5 == 0) {
                 computerScore += computerDice * 5;
+                computerTotalScore += computerScore;
             } else if (computerSecond % 2 == 0) {
                 computerScore += computerDice * 2;
+                computerTotalScore += computerScore;
             } else {
                 computerScore += computerDice;
+                computerTotalScore += computerScore;
             }
-
             System.out.println("computerScore = " + computerScore);
+            System.out.println("=======================");
 
             // to roll the dice twice
             counter++;
-            if (counter==2){
-                if (playerScore>computerScore){
-                System.out.println("You won!! Your score is: " + playerScore + " Computer score is: " + computerScore);
-                }else if(playerScore<computerScore){
-                System.out.println("You lost!! Your score is: " + playerScore + " Computer score is: " + computerScore);
-                }else {
-                    System.out.println("It's a DRAW! Your score is: " + playerScore + " Computer score is: " + computerScore);
+            if (counter == 2){
+                if (playerTotalScore > computerTotalScore) {
+                    System.out.println("You won!! Your score is: " + playerTotalScore + " Computer score is: " + computerTotalScore);
+                    break;
+                } else if (playerTotalScore < computerScore) {
+                    System.out.println("You lost!! Your score is: " + playerTotalScore + " Computer score is: " + computerTotalScore);
+                    break;
+                } else {
+                    System.out.println("It's a DRAW! Your score is: " + playerTotalScore + " Computer score is: " + computerTotalScore);
+                    break;
                 }
+            }
 
-        } else {
-            rollDice();  // calling the method in else part acts like a loop
-        }
+        } while (true);
     }
+
 
 }
