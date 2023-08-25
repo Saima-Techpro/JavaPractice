@@ -1,22 +1,21 @@
-package practices_dt.miniproject.busticketcalculation;
+package practices_nt.miniprojects.busticketcalculation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bus {
+    // busNum, seatNo;
 
-    // bus number , seats
     public String busNum;
+
     public List<String> seats = new ArrayList<>();
 
     public Bus(String busNum) {  // constructor
         this.busNum = busNum;
-
-        for (int i = 1; i < 33 ; i++) {
-            seats.add(i + "");
+// to ensure the bus has 32 seat, we create a list and store these seats
+        for (int i=1; i<33; i++){
+            this.seats.add(i +"");
         }
     }
-
-
 
 }

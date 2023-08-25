@@ -1,4 +1,4 @@
-package practices_nt.miniproject.busticketcalculation;
+package practices_nt.miniprojects.busticketcalculation;
 
 public class Ticket {
     // distance, journeyType, price, seatNum

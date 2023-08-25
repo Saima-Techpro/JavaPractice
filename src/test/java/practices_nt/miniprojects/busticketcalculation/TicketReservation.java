@@ -1,4 +1,4 @@
-package practices_nt.miniproject.busticketcalculation;
+package practices_nt.miniprojects.busticketcalculation;
 
 
 import java.util.Scanner;
