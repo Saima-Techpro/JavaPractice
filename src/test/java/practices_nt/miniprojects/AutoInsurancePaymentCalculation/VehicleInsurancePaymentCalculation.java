@@ -49,7 +49,7 @@ public class VehicleInsurancePaymentCalculation {
 
                 objVehicle.payment=objVehicle.countPayment(term);
 
-                //check if the payment is greater than 0, give a message to the user "Calculation Done! / Insurance Details:"
+                //check if the payment is greater than 0, give a message to the user "Calculation Done! OR Insurance Details:"
                 //if the payment is 0 or negative give a message to the user "Incorrect data entrance"
 
                 String termName= term==1 ? "June 2023": "December 2023"; // create a ternary and store in local variable
@@ -58,6 +58,7 @@ public class VehicleInsurancePaymentCalculation {
                     System.out.println("Insurance Details: ");
                     System.out.println("Vehicle Type: "+ objVehicle.type);
                     // System.out.println(objVehicle.busType == 1 ? "Bus type 1: 18-30 seats" : "Bus type 2: 31 and above seats");
+                    // To print term name, create a ternary and store in a local String variable termName
                     System.out.println("Term : "+ termName);
                     System.out.println("Payment due: " + objVehicle.payment);
                     // give option to restart if user wants to calculate insurance for another vehicle
@@ -70,7 +71,7 @@ public class VehicleInsurancePaymentCalculation {
                         isFailed=false;
                     }
 
-                }else{  // ask user if he wants to restart the application
+                }else{  // if payment is negative, warn user and ask user if he wants to restart the application
                     System.out.println("Incorrect data entrance");
                     System.out.println("To Restart Please Press 1, To Exit Please Press 0: ");
                     select= input.nextInt();
