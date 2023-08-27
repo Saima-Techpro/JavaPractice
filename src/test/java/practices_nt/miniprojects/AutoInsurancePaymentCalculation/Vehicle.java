@@ -1,4 +1,4 @@
-package practices_nt.miniprojects.AutonIsurancePaymentCalculation;
+package practices_nt.miniprojects.AutoInsurancePaymentCalculation;
 
 import java.util.Scanner;
 
@@ -17,7 +17,8 @@ public class Vehicle {
     public int payment;
     int busType;
 
-    public int countPayment(int term){
+    public int countPayment(int term){  // term will be given by the user
+        // show basic if, if else() and else part(for incorrect data) of the statement and then add switch statement
 
         if (term==1){
 
@@ -29,6 +30,7 @@ public class Vehicle {
                     payment=3000;
                     break;
                 case "BUS":
+                    // create separate method for Bus coz there are two types of buses... nested switch is not recommended
                     countBusPayment(term);
                     break;
                 case "MOTORCYCLE":
@@ -69,15 +71,6 @@ public class Vehicle {
     }
 
     /*
-    we can refine and improve our project even more by:
-      1. adding discounts e.g. 10% less if you pay by this ....  date OR 25% less if you insure your car with us for 2 terms etc.
-      2. we can add different calculations for cars (hybrid, electric, diesel etc.), for trucks (tow truck, trailer, flatbed truck  etc.) for motorcycles(heavy bike, mountain bike, hybrid bike etc.)
-      3. discounts for registering more than one vehicles with us etc.
-
-     */
-
-
-    /*
      Tariff period: December 2023, June 2023
       1st term: June 2023                      2nd term: December 2023
          cars: 2000                            cars: 2500
@@ -89,7 +82,7 @@ public class Vehicle {
 
         Scanner input= new Scanner(System.in);
         System.out.println("Enter the type of bus: ");
-        System.out.println("Type 1: 18-30 seats"+"\n Type 2: 31 and above seats");
+        System.out.println("Type 1: 18-30 seats"+"\nType 2: 31 and above seats");
 
         // int busType=input.nextInt();  create a local variable
         busType=input.nextInt();         // or create class variable and initiate it here
@@ -113,6 +106,14 @@ public class Vehicle {
         }
         return payment;
     }
+     /*
+    we can refine and improve our project even more by:
+      1. adding discounts e.g. 10% less if you pay by this ....  date OR 25% less if you insure your car with us for 2 terms etc.
+      2. we can add different calculations for cars (hybrid, electric, diesel etc.), for trucks (tow truck, trailer, flatbed truck  etc.) for motorcycles(heavy bike, mountain bike, hybrid bike etc.)
+      3. discounts for registering more than one vehicles with us etc.
+
+     */
+
 
 
 }
