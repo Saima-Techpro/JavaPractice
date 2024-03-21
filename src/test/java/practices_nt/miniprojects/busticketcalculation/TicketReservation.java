@@ -13,10 +13,12 @@ All buses should have a seat number in total "32".
 Take the payment as 1 USD / km for distance. (*2 for Round-trip trip)
 First, calculate the total price of the trip and then apply the following rules to the customer according to the conditions;
 
-Condition:
+Conditions:
 
 Values received from the user must be valid (distance and age are positive numbers, trip type is 1 or 2).
 Otherwise, "You Have Entered Wrong Data!" or Any warning should be given.
+
+Discounts:
 
 1- If the person has chosen the "Journey Type" Round-trip trip, 20% discount is applied on the ticket price.
 
@@ -31,10 +33,12 @@ If the person is over 65 years old, a 30% discount is applied on the ticket pric
 public class TicketReservation {
     public static void main(String[] args) {
         // create bus object
-        Bus bus = new Bus("Hounslow 222");
+        Bus bus = new Bus("Baker Street 78");
+//       System.out.println("bus seats = " + bus.seats);
 
         // create ticket object
         Ticket ticket = new Ticket();
+//        System.out.println("ticket.seatNum = " + ticket.seatNum);
 
         start(bus, ticket);
 
@@ -63,17 +67,17 @@ public class TicketReservation {
             int seat = scan. nextInt();
 
             // remove the reserved seat from the List
-            //bus.seats.remove(seat);  // didn't remove seat from the list ... cuased a bug
+            //bus.seats.remove(seat);  // didn't remove seat from the list ... caused a bug
             bus.seats.remove(String.valueOf(seat));
 
             // Conditions:
             boolean check = type==1 || type==2;
 
             if (distance>0 && age>0 && check ){
-                // calculate the ticket price
                 ticket.journeyType= type;
                 ticket.distance = distance;
                  ticket.seatNum = seat;
+                // calculate the ticket price
                  ticket.price = calculatePrice(ticket, age);
                  ticket.printTicket(bus);
 
@@ -111,26 +115,27 @@ public class TicketReservation {
                 break;
             case 2:  // Round Trip
                 if (seat%3==0){  // in case user chooses single seat
-                    total = dis*2.4;
+                    total = dis*2.4;  // double up the 20%
                 }else {
                     total = dis*2;
                 }
                 System.out.println("Total Price: " + total);
-                total = total*0.8;  // 20% discount overall for choosing a Round Trip
-                System.out.println("Total Price after Discount: " + total);
+                // 20% discount overall for choosing a Round Trip
+                total = total*0.8;
+                System.out.println("Total Price after Round-Trip Discount: " + total);
                 break;
         }
 
         // age discount
         if (age<12){
             total = total*0.5;  // 50% discount
-            System.out.println("Total Price after Discount: " + total);
+            System.out.println("Total Price after Children under 12: " + total);
         }else if (age<25){
             total = total*0.9;  // 10% discount
-            System.out.println("Total Price after Discount: " + total);
+            System.out.println("Total Price after Student Discount: " + total);
         }else if (age>=65 && age<=120){
             total = total*0.7;  // 30% discount
-            System.out.println("Total Price after Discount: " + total);
+            System.out.println("Total Price after Elderly Discount: " + total);
         }
         return total;
     }

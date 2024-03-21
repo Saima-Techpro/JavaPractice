@@ -3,7 +3,7 @@ package practices_nt.miniprojects.StudentManagementSystem;
 import java.sql.*;
 
 
-//class which will be connted to DB(connection, statement, prepared statement)
+//class which will be connected to DB(connection, statement, prepared statement)
 public class StudentRepository {
 
     private Connection con;
@@ -13,7 +13,7 @@ public class StudentRepository {
     //step-3 method to create connection
     private void getConnection(){
         try {
-            this.con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jdbc_db", "dev_user", "password");
+            this.con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "Swar2005!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
