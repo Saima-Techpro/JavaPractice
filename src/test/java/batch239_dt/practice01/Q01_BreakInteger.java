@@ -16,12 +16,21 @@ output:        1
          */
 
 
-        int x = 12345; // 12345%10 => 1234.5
-        int ones = x%10;
-        int tens = (x/10)%10;  // 12345/10 => 1234.5
-        int hundreds = (x/100)%10;  // 12345/100 => 123.45
-        int thousands = (x/1000)%10;  // 12345/1000 => 12.345
-        int tenThousands = (x/10000)%10;  // 12345/10000 => 1.2345
+        int x = 12345;
+        int ones = x%10; // 12345 % 10 => 1234.5 => 5
+        System.out.println("ones = " + ones);
+
+        int tens = (x/10)%10;  // 12345/10 => 1234 % 10 => 4
+        System.out.println("tens = " + tens);
+
+        int hundreds = (x/100)%10;  // 12345/100 => 123.45 % 10 => 3
+        System.out.println("hundreds = " + hundreds);
+
+        int thousands = (x/1000)%10;  // 12345/1000 => 12.345 % 10 => 2
+        System.out.println("thousands = " + thousands);
+
+        int tenThousands = (x/10000)%10;  // 12345/10000 => 1.2345 % 10 => 1
+        System.out.println("tenThousands = " + tenThousands);
 
         // camelCase, snake_case, PASCAL_CASE, kebab-case   => naming conventions
 
